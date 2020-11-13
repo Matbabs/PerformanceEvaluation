@@ -67,7 +67,7 @@ compute(start, end, steps){
     sum = 0.0
     x = 0.0
 
-    for (ii = 1 ;  ii <= nb_steps ; ++ii){
+    for (ii = start ;  ii <= end ; ++ii){
         x = (ii-0.5)*steps
         sum += 4.0 / (1.0 + x * x)
     }
