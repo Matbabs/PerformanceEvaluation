@@ -47,8 +47,56 @@ Implementation in :
 Please note that each algorithm should be provided in both sequential and parallel versions.
 
 ## PI
+### Sequential
+```c
+nb_steps = 1000000
+sum = 0.0
+steps = 1 / nb_steps
+
+for (ii = 1 ;  ii <= nb_steps ; ++ii){
+    x = (i-0.5)*steps
+    sum += 4.0 / (1.0 + x * x)
+}
+
+p = steps * sum
 ```
-<<Insert Pseudo code here, plz.>>
+
+### Parallel
+```c
+compute(start, end, steps){
+    sum = 0.0
+    x = 0.0
+
+    for (ii = 1 ;  ii <= nb_steps ; ++ii){
+        x = (i-0.5)*steps
+        sum += 4.0 / (1.0 + x * x)
+    }
+
+    return sum
+}
+
+main() {
+    nb_steps = 1000000
+    threads = 4
+    sum = 0.0
+    steps = 1 / nb_steps
+
+    div = (int) nb_steps / threads
+    last_div = div + nb_steps - div * threads // add what's missing to the last thread
+
+    // start threads-1 threads
+    for (ii = 1; ii < threads - 1 ; ++ii){
+        start_thread((nb_thread) -> {
+            sum += compute(ii * div, (ii+1)*div, steps)
+        })
+    }
+
+    sum += compute((threads-1)*div, (threads-1)*div + last_div, steps)
+
+    wait_for_all_threads()
+
+    p = steps * sum
+}
 ```
 
 ## Sorting algorithms
