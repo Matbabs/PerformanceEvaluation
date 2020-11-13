@@ -86,8 +86,8 @@ main() {
 
     // start threads-1 threads
     for (ii = 1; ii < threads - 1 ; ++ii){
-        start_thread((nb_thread) -> {
-            sum += compute(ii * div, (ii+1)*div, steps)
+        start_thread((id_thread) -> {
+            sum += compute(id_thread * div, (id_thread+1)*div, steps)
         })
     }
 
