@@ -51,6 +51,22 @@ def main(nSteps=1000000, nThreads=8):
 
 
 if __name__ == '__main__':
-    pi, theTime = main(1000000, 8)
+    if len(sys.argv) > 3:
+        print("USAGE :\n./main.py NITERATIONS NTHREADS")
+        exit(0)
+    niter = 1000000
+    nthreads = 8
+    try:
+        if len(sys.argv) > 1:
+            niter = int(sys.argv[1])
+        if len(sys.argv) == 3:
+            nthreads = int(sys.argv[2])
+        if niter < 1 or nthreads < 1:
+            raise ValueError("Negative arguments")
+    except ValueError as e:
+        print("Invalid argument type : {}".format(e))
+        exit(0)
+
+    pi, theTime = main(niter, nthreads)
     print("{}\n{}".format(pi, theTime))
 
