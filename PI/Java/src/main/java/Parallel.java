@@ -24,11 +24,13 @@ public class Parallel extends Thread {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        int nb_steps = 100000000;
+        Preprocessing preprocessing = new Preprocessing(args);
+        int nb_steps = preprocessing.getNbIterations();
+        int numberThreads = preprocessing.getNbThreads(); // greater or equal to 2
+        preprocessing.timerStart();
+
         double sum = 0.0;
         double steps = 1.0 / (double) nb_steps;
-
-        int numberThreads = 40; // greater or equal to 2
 
         Parallel[] threads = new Parallel[numberThreads];
 
@@ -48,6 +50,9 @@ public class Parallel extends Thread {
 
         sum *= steps;
 
-        System.out.println("PI=" + sum);
+        preprocessing.timerStop();
+
+        System.out.println(sum);
+        System.out.println(preprocessing.timerDuration());
     }
 }

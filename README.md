@@ -101,3 +101,29 @@ main() {
 
 ## Sorting algorithms
 The challenge here is memory management and division of it between all the threads
+
+# Content of the repo
+## PI : Approximation using the above algorithms
+
+Note that all programs under this section use the following syntax :
+`./PROG ITERATIONS NTHREADS`
+where
+PROG is the program to call
+ITERATIONS is the number of iterations to run for the PI approximation
+NTHREADS is the number of parallel threads
+
+Each program prints on stdout the estimated value of PI on a first line, then the time mesured for the calcul. Ex :
+```
+3.1415946535888706
+0.10193371772766113
+```
+Here the program took ~100ms to complete
+
+List of files :
+- Java = Java implementations
+- Projet_Python = Python implementations.
+- Makefile = Makefile to build and run everything.
+- runner.sh = Runner script which automatically runs benchmarks for a given program.
+
+
+

@@ -2,7 +2,10 @@ import java.util.stream.IntStream;
 
 public class ParallelStream {
     public static void main(String[] args){
-        int nb_steps = 100000;
+        Preprocessing preprocessing = new Preprocessing(args);
+        int nb_steps = preprocessing.getNbIterations();
+        preprocessing.timerStart();
+
         double sum;
         double steps = 1.0 / (double) nb_steps;
 
@@ -10,6 +13,9 @@ public class ParallelStream {
 
         sum*= steps;
 
-        System.out.println("PI=" + sum);
+        preprocessing.timerStop();
+
+        System.out.println(sum);
+        System.out.println(preprocessing.timerDuration());
     }
 }
