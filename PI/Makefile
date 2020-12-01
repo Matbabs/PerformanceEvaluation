@@ -2,6 +2,7 @@
 #
 
 BINPREFIX =bin/
+DATAPREFIX = rez/
 
 all: PI
 
@@ -34,5 +35,20 @@ GOPi:
 #	go run ./Go/*.go
 
 clean:
-	rm ./*~ ./*# $(BINPREFIX)pthread_pi $(BINPREFIX)*.class $(BINPREFIX)goseq $(BINPREFIX)gofast $(BINPREFIX)cppSeq_pi $(BINPREFIX)cppBoost_pi
+	-rm ./*~ ./*# $(BINPREFIX)pthread_pi $(BINPREFIX)*.class $(BINPREFIX)goseq $(BINPREFIX)gofast $(BINPREFIX)cppSeq_pi $(BINPREFIX)cppBoost_pi
+	-rm -r $(DATAPREFIX)
+
+runPi: PI
+	-mkdir $(DATAPREFIX)
+	-rm $(DATAPREFIX)*
+	./runner.sh "python Projet_Python/main.py" "$(DATAPREFIX)pySeq.csv"
+	./runner.sh "python Projet_Python/main_parallel.py" "$(DATAPREFIX)pyPara.csv"
+	./runner.sh "java -cp $(BINPREFIX) Sequential" "$(DATAPREFIX)javaSeq.csv"
+	./runner.sh "java -cp $(BINPREFIX) SequentialStream" "$(DATAPREFIX)javaSeqStream.csv"
+	./runner.sh "java -cp $(BINPREFIX) Parallel" "$(DATAPREFIX)javaPara.csv"
+	./runner.sh "java -cp $(BINPREFIX) ParallelStream" "$(DATAPREFIX)javaParaStream.csv"
+	./runner.sh "./$(BINPREFIX)/pthread_pi" "$(DATAPREFIX)cPThread.csv"
+	./runner.sh "ruby Ruby/rbPi_seq.rb" "$(DATAPREFIX)rbSeq.csv"
+	./runner.sh "ruby Ruby/rbPi_seqStream.rb" "$(DATAPREFIX)rbSeqStream.csv"
+	./runner.sh "ruby Ruby/rbPi_par.rb" "$(DATAPREFIX)rbPar.csv"
 

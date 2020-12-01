@@ -1,7 +1,9 @@
 #!/usr/bin/ruby
 require 'benchmark'
 
-n, c = ARGF.gets.split(' ').map!(&:to_i)
+# n, c = ARGF.gets.split(' ').map!(&:to_i)
+n = ARGV[0].to_i
+c = ARGV[1].to_i
 p(Benchmark.realtime do
   # n = 1_000_000
   step = 1 / n.to_f
