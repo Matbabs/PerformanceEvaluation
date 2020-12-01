@@ -9,7 +9,7 @@ public class Preprocessing {
             throw new RuntimeException("Usage: <number of iterations> <number of threads>");
         }
 
-        nbIterations = Integer.parseInt(args[1]);
+        nbIterations = Integer.parseInt(args[0]);
         nbThreads = Integer.parseInt(args[1]);
     }
 
