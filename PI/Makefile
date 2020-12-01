@@ -5,7 +5,7 @@ BINPREFIX =bin/
 
 all: PI
 
-PI: CProg CPP JAVA
+PI: CProg CPP JAVA GO
 
 JAVA: JavaS JavaP
 
@@ -24,10 +24,12 @@ CPP:
 	@echo "No CPP for now"
 
 GO:
-	go get -u github.com/matbabs/gofast
-	go build ./Go/*.go
+# Adding the - to ignore errors if go isn't installed
+	-go get -u github.com/matbabs/gofast
+	-go build ./Go/gofast_pi.go -o $(BINPREFIX)gofast
+	-go build ./Go/sequential_pi.go -o $(BINPREFIX)goseq
 #	go run ./Go/*.go
 
 clean:
-	rm ./*~ ./*# $(BINPREFIX)pthread_pi  $(BINPREFIX)*.class
+	rm ./*~ ./*# $(BINPREFIX)pthread_pi $(BINPREFIX)*.class $(BINPREFIX)goseq $(BINPREFIX)gofast
 
