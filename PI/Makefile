@@ -5,9 +5,9 @@ BINPREFIX =bin/
 
 all: PI
 
-PI: CProg CPP JAVA GO
+PI: CPi CPPPi JAVAPi GOPi
 
-JAVA: JavaS JavaP
+JAVAPi: JavaS JavaP
 
 JavaP: Java/src/main/java/Parallel.java Java/src/main/java/ParallelStream.java
 	javac Java/src/main/java/Parallel.java -d $(BINPREFIX)
@@ -17,13 +17,15 @@ JavaS: Java/src/main/java/Sequential.java Java/src/main/java/SequentialStream.ja
 	javac Java/src/main/java/Sequential.java -d $(BINPREFIX)
 	javac Java/src/main/java/SequentialStream.java -d $(BINPREFIX)
 
-CProg: C/pthread_pi.c
+CPi: C/pthread_pi.c
 	gcc C/pthread_pi.c -o $(BINPREFIX)pthread_pi -Wall -Wextra -lpthread -lm
 
-CPP:
-	@echo "No CPP for now"
+CPPPi:
+	-g++ CPP/singlethread.cpp -o $(BINPREFIX)cppSeq_pi -Wall -Wextra -lm
+# Adding the - to ignore errors if boost isn't installed
+	-g++ CPP/multithread.cpp -o $(BINPREFIX)cppBoost_pi -Wall -Wextra -lm
 
-GO:
+GOPi:
 # Adding the - to ignore errors if go isn't installed
 	-go get -u github.com/matbabs/gofast
 	-go build ./Go/gofast_pi.go -o $(BINPREFIX)gofast
@@ -31,5 +33,5 @@ GO:
 #	go run ./Go/*.go
 
 clean:
-	rm ./*~ ./*# $(BINPREFIX)pthread_pi $(BINPREFIX)*.class $(BINPREFIX)goseq $(BINPREFIX)gofast
+	rm ./*~ ./*# $(BINPREFIX)pthread_pi $(BINPREFIX)*.class $(BINPREFIX)goseq $(BINPREFIX)gofast $(BINPREFIX)cppSeq_pi $(BINPREFIX)cppBoost_pi
 
