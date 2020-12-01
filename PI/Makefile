@@ -21,9 +21,9 @@ CPi: C/pthread_pi.c
 	gcc C/pthread_pi.c -o $(BINPREFIX)pthread_pi -Wall -Wextra -lpthread -lm
 
 CPPPi:
-	-g++ CPP/singlethread.cpp -o $(BINPREFIX)cppSeq_pi -Wall -Wextra -lm
+	g++ CPP/singlethread.cpp -o $(BINPREFIX)cppSeq_pi -Wall -Wextra -lm
 # Adding the - to ignore errors if boost isn't installed
-	-g++ CPP/multithread.cpp -o $(BINPREFIX)cppBoost_pi -Wall -Wextra -lm
+	-g++ CPP/multithread.cpp -o $(BINPREFIX)cppBoost_pi -Wall -Wextra -lm -lboost
 
 GOPi:
 # Adding the - to ignore errors if go isn't installed
