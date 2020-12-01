@@ -1,5 +1,6 @@
 #include <boost/thread/thread.hpp>
 #include <iostream>
+#include "preprocessing.hpp"
 
 
 class Pi {
@@ -62,9 +63,15 @@ double Pi::compute() {
 }
 
 int main(int argc, char *argv[]) {
-    Pi pi(1000000000, 4);
+    Preprocessing preprocess(argc, argv);
+
+    preprocess.timer_start();
+    Pi pi(preprocess.get_nb_iterations(), preprocess.get_nb_threads());
     double res = pi.compute();
-    std::cout << "Pi: " << res << std::endl;
+    preprocess.timer_stop();
+
+    std::cout << res << std::endl;
+    std::cout << preprocess.timer_duration() << std::endl;
 
     return 0;
 }
