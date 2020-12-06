@@ -125,5 +125,20 @@ List of files :
 - Makefile = Makefile to build and run everything.
 - runner.sh = Runner script which automatically runs benchmarks for a given program.
 
+## Sorting
 
+Note that all programs under this section use the following syntax :
+`./PROG ARRAY_SIZE NTHREADS`
+where
+PROG is the program to call
+ARRAY_SIZE is the size of the array to be generated (values are integers ranging from 0 to ARRAY_SIZE exclusive)
+NTHREADS is the number of threads
 
+Each program prints on stdout the estimated time to sort (not to generate the array)
+```
+7.2830092
+```
+Here the program took about 7 seconds to complete.
+
+Exceptions:
+- Java parallel implementation is currently using the parameter NTHREADS as the parallelism value.
