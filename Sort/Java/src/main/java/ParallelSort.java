@@ -3,7 +3,7 @@ import java.util.Properties;
 import java.util.Random;
 
 public class ParallelSort {
-    public static void main(final String args[]) {
+    public static void main(final String[] args) {
         final var preprocessing = new Preprocessing(args);
 
         // Control the parallelism factor:
