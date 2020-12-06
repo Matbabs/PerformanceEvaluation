@@ -120,7 +120,7 @@ Each program prints on stdout the estimated value of PI on a first line, then th
 Here the program took ~100ms to complete
 
 List of files :
-- Java = Java implementations
+- Java = Java implementations (the parallel stream implementation's NTHREADS refert to the parallelism value of the common thread pool)
 - Projet_Python = Python implementations.
 - Makefile = Makefile to build and run everything.
 - runner.sh = Runner script which automatically runs benchmarks for a given program.
