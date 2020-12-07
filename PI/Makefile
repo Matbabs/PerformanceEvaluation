@@ -26,6 +26,7 @@ CPPPi:
 # 	g++ CPP/preprocessing.hpp CPP/singlethread.cpp -o $(BINPREFIX)cppSeq_pi -Wall -Wextra -lm
 # Adding the - to ignore errors if boost isn't installed
 #	-g++ CPP/preprocessing.hpp CPP/multithread.cpp -o $(BINPREFIX)cppBoost_pi -Wall -Wextra -lm -lboost
+# TODO : Take the line from Sort Makefile
 	-cd CPP && cmake . && make && mv multithread ../bin/cppSeq_pi && mv singlethread ../bin/cppBoost_pi
 
 GOPi:
