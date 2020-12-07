@@ -7,7 +7,7 @@ DATAPREFIX = data/
 
 all: Sorting
 
-Sorting: CPPSorting JAVASorting
+Sorting: CPPSorting JAVASorting GOSort RUST
 
 JAVASorting: folders JavaS JavaP
 
@@ -22,6 +22,17 @@ CPPSorting: folders
 # Adding the - to ignore errors if boost isn't installed
 #	-g++ CPP/preprocessing.hpp CPP/multithread.cpp -o $(BINPREFIX)cppBoost_sorting -Wall -Wextra -lm -lboost
 	-cd $(BINPREFIX) ; mkdir -p CPP ; cd CPP ; cmake -B. -S../../CPP/ && make
+
+GOSort:
+# Adding the - to ignore errors if go isn't installed
+#	-cd Go && go get -u github.com/matbabs/gofast && go build ./*.go
+	-go get -u github.com/matbabs/gofast
+	-go build -o $(BINPREFIX)gofast_sort ./Go/processing/processing.go 
+	-go build -o $(BINPREFIX)goseq_sort ./Go/sequential_sort/sequential_sort.go
+#	go run ./Go/*.go
+
+RUST:
+	-cd Rust/sequential_sort && cargo build --target-dir=../../bin/ --release
 
 clean: folders
 #-rm ./*~ ./*#
