@@ -27,7 +27,7 @@ GOSort:
 # Adding the - to ignore errors if go isn't installed
 #	-cd Go && go get -u github.com/matbabs/gofast && go build ./*.go
 	-go get -u github.com/matbabs/gofast
-	-go build -o $(BINPREFIX)gofast_sort ./Go/processing/processing.go 
+#	-go build -o $(BINPREFIX)gofast_sort ./Go/processing/processing.go 
 	-go build -o $(BINPREFIX)goseq_sort ./Go/sequential_sort/sequential_sort.go
 #	go run ./Go/*.go
 
@@ -52,12 +52,11 @@ runSorting: Sorting
 	-./runnerPara.sh "python Python/sortPara.py" "$(TEMPPREFIX)pyPara.csv"
 	-./runnerSeq.sh "java -cp $(BINPREFIX) NonParallelSort" "$(TEMPPREFIX)javaNonPara.csv"
 	-./runnerPara.sh "java -cp $(BINPREFIX) ParallelSort" "$(TEMPPREFIX)javaPara.csv"
-	-./runnerSeq.sh "./$(BINPREFIX)/block_indirect_sort" "$(TEMPPREFIX)CPPBlock.csv"
-	-./runnerPara.sh "./$(BINPREFIX)/parallel_stable_sort" "$(TEMPPREFIX)CPPPara.csv"
-	-./runnerPara.sh "./$(BINPREFIX)/sample_sort" "$(TEMPPREFIX)CPPSample.csv"
-	-./runnerPara.sh "./$(BINPREFIX)/singlethread" "$(TEMPPREFIX)CPPSeq.csv"
+	-./runnerSeq.sh "./$(BINPREFIX)/CPP/block_indirect_sort" "$(TEMPPREFIX)CPPBlock.csv"
+	-./runnerPara.sh "./$(BINPREFIX)/CPP/parallel_stable_sort" "$(TEMPPREFIX)CPPPara.csv"
+	-./runnerPara.sh "./$(BINPREFIX)/CPP/sample_sort" "$(TEMPPREFIX)CPPSample.csv"
+	-./runnerPara.sh "./$(BINPREFIX)/CPP/singlethread" "$(TEMPPREFIX)CPPSeq.csv"
 	-./runnerSeq.sh "./$(BINPREFIX)/goseq_sort" "$(TEMPPREFIX)GoSeq.csv"
-	-./runnerPara.sh "./$(BINPREFIX)/gofast_sort" "$(TEMPPREFIX)GoPara.csv"
 	-./runnerSeq.sh "./$(BINPREFIX)/release/sequential_pi" "$(TEMPPREFIX)rustSeq.csv"
 	-./runnerPara.sh "ruby Ruby/sortSeq.rb" "$(TEMPPREFIX)rbSeq.csv"
 
