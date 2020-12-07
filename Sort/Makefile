@@ -46,10 +46,8 @@ runSorting: Sorting
 	-rm $(DATAPREFIX)*
 	./runner.sh "python Projet_Python/main.py" "$(DATAPREFIX)pySeq.csv"
 	./runner.sh "python Projet_Python/main_parallel.py" "$(DATAPREFIX)pyPara.csv"
-	./runner.sh "java -cp $(BINPREFIX) Sequential" "$(DATAPREFIX)javaSeq.csv"
-	./runner.sh "java -cp $(BINPREFIX) SequentialStream" "$(DATAPREFIX)javaSeqStream.csv"
-	./runner.sh "java -cp $(BINPREFIX) Parallel" "$(DATAPREFIX)javaPara.csv"
-	./runner.sh "java -cp $(BINPREFIX) ParallelStream" "$(DATAPREFIX)javaParaStream.csv"
+	./runner.sh "java -cp $(BINPREFIX) NonParallelSort" "$(DATAPREFIX)javaNonPara.csv"
+	./runner.sh "java -cp $(BINPREFIX) ParallelSort" "$(DATAPREFIX)javaPara.csv"
 	./runner.sh "./$(BINPREFIX)/pthread_sorting" "$(DATAPREFIX)cPThread.csv"
 	./runner.sh "ruby Ruby/rbSorting_seq.rb" "$(DATAPREFIX)rbSeq.csv"
 	./runner.sh "ruby Ruby/rbSorting_seqStream.rb" "$(DATAPREFIX)rbSeqStream.csv"
