@@ -1,6 +1,6 @@
 #include "./processing.h"
 
-//compile with `gcc sequantial_pi.c processing.h -l pthread -lm -o pthread_pi`
+//compile with `gcc sequantial_pi.c processing.h -l pthread -lm -o sequantial_pi`
 
 int main (int argc, char *argv[]) { 
     double pi;
