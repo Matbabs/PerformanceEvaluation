@@ -42,7 +42,8 @@ RUST:
 
 clean:
 	-rm ./*~ ./*# $(BINPREFIX)pthread_pi $(BINPREFIX)*.class $(BINPREFIX)goseq_pi $(BINPREFIX)gofast_pi $(BINPREFIX)cppSeq_pi $(BINPREFIX)cppBoost_pi
-	-rm -r $(DATAPREFIX)
+	-rm -r bin/release
+	-rm -r $(TEMPPREFIX)
 
 runPi: PI
 	-mkdir $(TEMPPREFIX)
@@ -53,13 +54,13 @@ runPi: PI
 	./runner.sh "java -cp $(BINPREFIX) SequentialStream" "$(TEMPPREFIX)javaSeqStream.csv"
 	./runner.sh "java -cp $(BINPREFIX) Parallel" "$(TEMPPREFIX)javaPara.csv"
 	./runner.sh "java -cp $(BINPREFIX) ParallelStream" "$(TEMPPREFIX)javaParaStream.csv"
-	./runner.sh "./$(BINPREFIX)/pthread_pi" "$(DATAPREFIX)cPThread.csv"
-	./runner.sh "./$(BINPREFIX)/cppSeq_pi" "$(DATAPREFIX)CPPSeq.csv"
-	./runner.sh "./$(BINPREFIX)/cppBoost_pi" "$(DATAPREFIX)CPPBoost.csv"
-	./runner.sh "./$(BINPREFIX)/goseq_pi" "$(DATAPREFIX)GoSeq.csv"
-	./runner.sh "./$(BINPREFIX)/gofast_pi" "$(DATAPREFIX)GoPara.csv"
-	./runner.sh "./$(BINPREFIX)/release/sequential_pi" "$(DATAPREFIX)rustSeq.csv"
-	./runner.sh "./$(BINPREFIX)/release/parallel_pi" "$(DATAPREFIX)rustPara.csv"
+	./runner.sh "./$(BINPREFIX)/pthread_pi" "$(TEMPPREFIX)cPThread.csv"
+	./runner.sh "./$(BINPREFIX)/cppSeq_pi" "$(TEMPPREFIX)CPPSeq.csv"
+	./runner.sh "./$(BINPREFIX)/cppBoost_pi" "$(TEMPPREFIX)CPPBoost.csv"
+	./runner.sh "./$(BINPREFIX)/goseq_pi" "$(TEMPPREFIX)GoSeq.csv"
+	./runner.sh "./$(BINPREFIX)/gofast_pi" "$(TEMPPREFIX)GoPara.csv"
+	./runner.sh "./$(BINPREFIX)/release/sequential_pi" "$(TEMPPREFIX)rustSeq.csv"
+	./runner.sh "./$(BINPREFIX)/release/parallel_pi" "$(TEMPPREFIX)rustPara.csv"
 	./runner.sh "ruby Ruby/rbPi_seq.rb" "$(TEMPPREFIX)rbSeq.csv"
 	./runner.sh "ruby Ruby/rbPi_seqStream.rb" "$(TEMPPREFIX)rbSeqStream.csv"
 	./runner.sh "ruby Ruby/rbPi_par.rb" "$(TEMPPREFIX)rbPar.csv"
