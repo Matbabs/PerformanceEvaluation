@@ -24,8 +24,8 @@ func gofastPi(res gofast.Resolver) {
 }
 
 var nbTREADS int
-var scatter = make(chan step, nbTREADS)
-var gather = make(chan float64, nbTREADS)
+var scatter chan step
+var gather chan float64
 
 func main() {
 
@@ -34,6 +34,9 @@ func main() {
 	var steps = processing.NbIterations
 	nbTREADS = processing.NbThreads
 	pi := 0.0
+
+	scatter = make(chan step, nbTREADS)
+	gather = make(chan float64, nbTREADS)
 
 	processing.TimerStart()
 
