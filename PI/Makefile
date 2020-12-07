@@ -6,7 +6,7 @@ DATAPREFIX = rez/
 
 all: PI
 
-PI: CPi CPPPi JAVAPi GOPi
+PI: CPi CPPPi JAVAPi GOPi RUST
 
 JAVAPi: JavaS JavaP
 
@@ -25,17 +25,22 @@ CPPPi:
 # 	g++ CPP/preprocessing.hpp CPP/singlethread.cpp -o $(BINPREFIX)cppSeq_pi -Wall -Wextra -lm
 # Adding the - to ignore errors if boost isn't installed
 #	-g++ CPP/preprocessing.hpp CPP/multithread.cpp -o $(BINPREFIX)cppBoost_pi -Wall -Wextra -lm -lboost
-	-cd CPP; cmake .; make
+	-cd CPP && cmake . && make && mv multithread ../bin/cppSeq_pi && mv singlethread ../bin/cppBoost_pi
 
 GOPi:
 # Adding the - to ignore errors if go isn't installed
-	-go get -u github.com/matbabs/gofast
-	-go build ./Go/gofast_pi.go -o $(BINPREFIX)gofast
-	-go build ./Go/sequential_pi.go -o $(BINPREFIX)goseq
+#	-cd Go && go get -u github.com/matbabs/gofast && go build ./*.go
+	go get -u github.com/matbabs/gofast
+	-go build -o $(BINPREFIX)gofast_pi ./Go/gofast_pi/gofast_pi.go 
+	-go build -o $(BINPREFIX)goseq_pi ./Go/sequential_pi/sequential_pi.go
 #	go run ./Go/*.go
 
+RUST:
+	-cd Rust/sequential_pi && cargo build --target-dir=../../bin/ --release
+	-cd Rust/parallel_pi && cargo build --target-dir=../../bin/ --release
+
 clean:
-	-rm ./*~ ./*# $(BINPREFIX)pthread_pi $(BINPREFIX)*.class $(BINPREFIX)goseq $(BINPREFIX)gofast $(BINPREFIX)cppSeq_pi $(BINPREFIX)cppBoost_pi
+	-rm ./*~ ./*# $(BINPREFIX)pthread_pi $(BINPREFIX)*.class $(BINPREFIX)goseq_pi $(BINPREFIX)gofast_pi $(BINPREFIX)cppSeq_pi $(BINPREFIX)cppBoost_pi
 	-rm -r $(DATAPREFIX)
 
 runPi: PI
@@ -48,6 +53,12 @@ runPi: PI
 	./runner.sh "java -cp $(BINPREFIX) Parallel" "$(DATAPREFIX)javaPara.csv"
 	./runner.sh "java -cp $(BINPREFIX) ParallelStream" "$(DATAPREFIX)javaParaStream.csv"
 	./runner.sh "./$(BINPREFIX)/pthread_pi" "$(DATAPREFIX)cPThread.csv"
+	./runner.sh "./$(BINPREFIX)/cppSeq_pi" "$(DATAPREFIX)CPPSeq.csv"
+	./runner.sh "./$(BINPREFIX)/cppBoost_pi" "$(DATAPREFIX)CPPBoost.csv"
+	./runner.sh "./$(BINPREFIX)/goseq_pi" "$(DATAPREFIX)GoSeq.csv"
+	./runner.sh "./$(BINPREFIX)/gofast_pi" "$(DATAPREFIX)GoPara.csv"
+	./runner.sh "./$(BINPREFIX)/release/sequential_pi" "$(DATAPREFIX)rustSeq.csv"
+	./runner.sh "./$(BINPREFIX)/release/parallel_pi" "$(DATAPREFIX)rustPara.csv"
 	./runner.sh "ruby Ruby/rbPi_seq.rb" "$(DATAPREFIX)rbSeq.csv"
 	./runner.sh "ruby Ruby/rbPi_seqStream.rb" "$(DATAPREFIX)rbSeqStream.csv"
 	./runner.sh "ruby Ruby/rbPi_par.rb" "$(DATAPREFIX)rbPar.csv"
