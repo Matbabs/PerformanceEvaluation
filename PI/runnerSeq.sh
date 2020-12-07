@@ -6,7 +6,7 @@ do
 	for k in {1..10}
 	do
 	    echo $i >> $2
-	    echo $j >> $2
+	    echo 1 >> $2
 	    $1 $i 1 >> $2
 	    echo >> $2
 	done

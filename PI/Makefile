@@ -20,7 +20,7 @@ JavaS: Java/src/main/java/Sequential.java Java/src/main/java/SequentialStream.ja
 	-javac -cp Java/src/main/java Java/src/main/java/SequentialStream.java -d $(BINPREFIX)
 
 CPi: C/pthread_pi.c
-	-gcc C/pthread_pi.c -o $(BINPREFIX)pthread_pi -Wall -Wextra -lpthread -lm
+	-gcc C/pthread_pi.c -o $(BINPREFIX)pthread_pi -Wall -Wextra -lpthread -lm -O2
 
 CPPPi:
 # 	g++ CPP/preprocessing.hpp CPP/singlethread.cpp -o $(BINPREFIX)cppSeq_pi -Wall -Wextra -lm
@@ -67,5 +67,5 @@ runPi: PI
 
 buildRez: runPi
 	-mkdir $(DATAPREFIX)
-	-for i in `ls $(TEMPPREFIX)`;do ./analyseRez.rb $(TEMPPREFIX)$$i $(DATAPREFIX)`basename $$i`; done
+	-for i in `ls $(TEMPPREFIX)`;do echo $$i; ./analyseRez.rb $(TEMPPREFIX)$$i $(DATAPREFIX)`basename $$i`; done
 
