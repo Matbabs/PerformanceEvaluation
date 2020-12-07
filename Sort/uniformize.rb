@@ -18,8 +18,7 @@ ARGV.each do |filename|
   theFile = File.new(filename+"_uniformized.csv", "w+")
   lines.each do |line|
     rez = line.split(";")
-    puts last_result
-    if last_result != rez[0].to_i
+    if last_result != rez[0].to_i || nb_threads != rez[1].to_i
       moy = sum / nb_results
       theFile.write(''+last_result.to_s+';'+nb_threads.to_s+';'+moy.to_s+"\n")
 
