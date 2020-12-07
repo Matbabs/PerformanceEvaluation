@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 
+	"../processing"
 	"github.com/matbabs/gofast"
 )
 
@@ -22,13 +23,20 @@ func gofastPi(res gofast.Resolver) {
 	res.Done <- true
 }
 
-var nbTREADS = 50
+var nbTREADS int
 var scatter = make(chan step, nbTREADS)
 var gather = make(chan float64, nbTREADS)
 
 func main() {
-	var steps = 1000000
+
+	processing.InitProcessing()
+
+	var steps = processing.NbIterations
+	nbTREADS = processing.NbThreads
 	pi := 0.0
+
+	processing.TimerStart()
+
 	gofast.WorkerPool(nbTREADS, gofastPi)
 	block := ((steps) / nbTREADS)
 	for i := 0; i < nbTREADS; i++ {
@@ -37,6 +45,12 @@ func main() {
 	for i := 0; i < nbTREADS; i++ {
 		pi += <-gather
 	}
-	fmt.Println(pi)
+
 	gofast.WaitAll()
+
+	processing.TimerStop()
+
+	fmt.Println(pi)
+	fmt.Println(processing.TimerDuration())
+
 }
