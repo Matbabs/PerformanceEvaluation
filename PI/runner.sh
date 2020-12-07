@@ -10,6 +10,7 @@ do
 	    echo $i >> $2
 	    echo $j >> $2
 	    $1 $i $j >> $2
+	    echo >> $2
 	done
     done
 done

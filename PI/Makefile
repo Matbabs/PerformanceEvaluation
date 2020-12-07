@@ -2,7 +2,8 @@
 #
 
 BINPREFIX =bin/
-DATAPREFIX = rez/
+TEMPPREFIX = rez/
+DATAPREFIX = data/
 
 all: PI
 
@@ -44,14 +45,14 @@ clean:
 	-rm -r $(DATAPREFIX)
 
 runPi: PI
-	-mkdir $(DATAPREFIX)
-	-rm $(DATAPREFIX)*
-	./runner.sh "python Projet_Python/main.py" "$(DATAPREFIX)pySeq.csv"
-	./runner.sh "python Projet_Python/main_parallel.py" "$(DATAPREFIX)pyPara.csv"
-	./runner.sh "java -cp $(BINPREFIX) Sequential" "$(DATAPREFIX)javaSeq.csv"
-	./runner.sh "java -cp $(BINPREFIX) SequentialStream" "$(DATAPREFIX)javaSeqStream.csv"
-	./runner.sh "java -cp $(BINPREFIX) Parallel" "$(DATAPREFIX)javaPara.csv"
-	./runner.sh "java -cp $(BINPREFIX) ParallelStream" "$(DATAPREFIX)javaParaStream.csv"
+	-mkdir $(TEMPPREFIX)
+	-rm $(TEMPPREFIX)*
+	./runner.sh "python Projet_Python/main.py" "$(TEMPPREFIX)pySeq.csv"
+	./runner.sh "python Projet_Python/main_parallel.py" "$(TEMPPREFIX)pyPara.csv"
+	./runner.sh "java -cp $(BINPREFIX) Sequential" "$(TEMPPREFIX)javaSeq.csv"
+	./runner.sh "java -cp $(BINPREFIX) SequentialStream" "$(TEMPPREFIX)javaSeqStream.csv"
+	./runner.sh "java -cp $(BINPREFIX) Parallel" "$(TEMPPREFIX)javaPara.csv"
+	./runner.sh "java -cp $(BINPREFIX) ParallelStream" "$(TEMPPREFIX)javaParaStream.csv"
 	./runner.sh "./$(BINPREFIX)/pthread_pi" "$(DATAPREFIX)cPThread.csv"
 	./runner.sh "./$(BINPREFIX)/cppSeq_pi" "$(DATAPREFIX)CPPSeq.csv"
 	./runner.sh "./$(BINPREFIX)/cppBoost_pi" "$(DATAPREFIX)CPPBoost.csv"
@@ -59,7 +60,11 @@ runPi: PI
 	./runner.sh "./$(BINPREFIX)/gofast_pi" "$(DATAPREFIX)GoPara.csv"
 	./runner.sh "./$(BINPREFIX)/release/sequential_pi" "$(DATAPREFIX)rustSeq.csv"
 	./runner.sh "./$(BINPREFIX)/release/parallel_pi" "$(DATAPREFIX)rustPara.csv"
-	./runner.sh "ruby Ruby/rbPi_seq.rb" "$(DATAPREFIX)rbSeq.csv"
-	./runner.sh "ruby Ruby/rbPi_seqStream.rb" "$(DATAPREFIX)rbSeqStream.csv"
-	./runner.sh "ruby Ruby/rbPi_par.rb" "$(DATAPREFIX)rbPar.csv"
+	./runner.sh "ruby Ruby/rbPi_seq.rb" "$(TEMPPREFIX)rbSeq.csv"
+	./runner.sh "ruby Ruby/rbPi_seqStream.rb" "$(TEMPPREFIX)rbSeqStream.csv"
+	./runner.sh "ruby Ruby/rbPi_par.rb" "$(TEMPPREFIX)rbPar.csv"
+
+buildRez: runPi
+	-mkdir $(DATAPREFIX)
+	-for i in `ls $(TEMPPREFIX)`;do ./analyseRez.rb $(TEMPPREFIX)$$i $(DATAPREFIX)`basename $$i`; done
 
