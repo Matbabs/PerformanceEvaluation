@@ -20,12 +20,11 @@ var endTime time.Time
 
 //InitProcessing ...
 func InitProcessing() {
-	if len(os.Args) != 3 {
-		fmt.Println("Usage: <number of elements> <number of threads>")
+	if len(os.Args) != 2 {
+		fmt.Println("Usage: <number of elements>")
 		os.Exit(1)
 	}
 	NbElements, err = strconv.Atoi(os.Args[1])
-	NbThreads, err = strconv.Atoi(os.Args[2])
 }
 
 //TimerStart ...
