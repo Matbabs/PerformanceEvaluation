@@ -180,8 +180,9 @@ where :
 - DATA is only there for PI approximation, and gives the result of the algorithm
 - TIME is the time taken to complete.
 
-Each configuration (N;NTHREADS) is run 10 times, you can get the average using the 'uniformize.rb' script :
-cd data/ && ruby uniformize.rb `ls`
+Each configuration (N;NTHREADS) is run 10 times, you can get the average using the corresponding 'tools/uniformize.rb' script :
+Pi : cd PI/data/ && ruby ../../tools/uniformize_pi.rb `ls`
+Sort : cd Sort/data/ && ruby ../../tools/uniformize_sort.rb `ls`
 
 This script will create files names XXX_uniformized.csv, which contain the average measures for each configuration, without the DATA column.
 
