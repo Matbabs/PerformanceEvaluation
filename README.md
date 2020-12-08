@@ -1,3 +1,8 @@
+# Threading Frenzy
+
+![](https://img.shields.io/static/v1.svg?label=&message=Multithreading&color=2cb6aa)
+![](https://img.shields.io/static/v1.svg?label=Tool&message=Frenzy&color=edca9c)
+
 # Introduction
 This repository is the result of our Performance Evaluation project (november-december 2020).
 Our team was composed of Volodia PAROL-GUARINO, Matisse BABONNEAU and Alexandre DUVIVIER
