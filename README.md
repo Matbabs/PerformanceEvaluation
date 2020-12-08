@@ -26,7 +26,7 @@ We will compare the performance in two categories:
 - the first one is a global comparaison (to find the best of the best) ;
 - the second one is to analyze the result grouping them by the language they are written in (to find the best possible implementation in languages where parameters are varying).
 
-![](https://geekflare.com/wp-content/uploads/2020/07/Go-Logo_Aqua-e1595512116516-600x270.png= 50x)
+![](https://geekflare.com/wp-content/uploads/2020/07/Go-Logo_Aqua-e1595512116516-600x270.png =50x)
 
 # Actual Content
 This project was split into 2 parts :
