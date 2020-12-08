@@ -2,10 +2,10 @@
 
 ![](https://img.shields.io/static/v1.svg?label=Multithreading&message=Frenzy&color=2cb6aa)
 ![](https://img.shields.io/static/v1.svg?label=&message=C&color=5c6bc0)
-![](https://img.shields.io/static/v1.svg?label=&message=C++&color=659ad2)
+![](https://img.shields.io/static/v1.svg?label=&message=CPP&color=659ad2)
 ![](https://img.shields.io/static/v1.svg?label=&message=Python&color=ffd340)
 ![](https://img.shields.io/static/v1.svg?label=&message=Java&color=ea2d2e)
-![](https://img.shields.io/static/v1.svg?label=&message=Go&color=6ad7e5)
+![](https://img.shields.io/static/v1.svg?label=&message=Go&color=2cb6aa)
 ![](https://img.shields.io/static/v1.svg?label=&message=Rust&color=fbbc04)
 ![](https://img.shields.io/static/v1.svg?label=&message=Ruby&color=a81401)
 
