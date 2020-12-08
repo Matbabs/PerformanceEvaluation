@@ -1,7 +1,13 @@
 # Threading Frenzy
 
-![](https://img.shields.io/static/v1.svg?label=&message=Multithreading&color=2cb6aa)
-![](https://img.shields.io/static/v1.svg?label=Tool&message=Frenzy&color=edca9c)
+![](https://img.shields.io/static/v1.svg?label=Multithreading&message=Frenzy&color=2cb6aa)
+![](https://img.shields.io/static/v1.svg?label=Tool&message=C&color=edca9c)
+![](https://img.shields.io/static/v1.svg?label=Tool&message=C++&color=edca9c)
+![](https://img.shields.io/static/v1.svg?label=Tool&message=Python&color=edca9c)
+![](https://img.shields.io/static/v1.svg?label=Tool&message=Java&color=edca9c)
+![](https://img.shields.io/static/v1.svg?label=Tool&message=Go&color=edca9c)
+![](https://img.shields.io/static/v1.svg?label=Tool&message=Rust&color=edca9c)
+![](https://img.shields.io/static/v1.svg?label=Tool&message=Ruby&color=edca9c)
 
 # Introduction
 This repository is the result of our Performance Evaluation project (november-december 2020).
