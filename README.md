@@ -1,3 +1,7 @@
+# Introduction
+This repository is the result of our Performance Evaluation project (november-december 2020).
+Our team was composed of Volodia PAROL-GUARINO, Matisse BABONNEAU and Alexandre DUVIVIER
+
 # Goals
 The goal of the project is to evaluate the performances of different multithreading approaches. We are testing aspects such as :
 - Languages
@@ -10,8 +14,23 @@ We will compare the performance in two categories:
 - the first one is a global comparaison (to find the best of the best) ;
 - the second one is to analyze the result grouping them by the language they are written in (to find the best possible implementation in languages where parameters are varying).
 
-# Phases
-The project will be divided into phases. The completion of the phases depends of the efficiency of the group and/or the time found to complete them.
+# Actual Content
+This project was split into 2 parts :
+- Pi : We evaluated the performances of each language solution using the Pi approximation algorithm.
+- Sorting : We evaluated the performances of each chosen language implementation for array sorting.
+The following languages / libraries were used :
+- C (Pi Sequential; Pi parallel (PThread, OpenMP (Not used), MPI (Not used)))
+- C++ (Pi Sequential, Pi Parallel (Boost), Sorting (Boost))
+- Ruby (Pi Sequential; Pi parallel; Sorting (Default implementation))
+- Rust (Pi Sequential; Pi parallel; Sorting (Default implementation))
+- Java (Pi Sequential; Pi parallel; Sorting (Default implementation); Sorting Parallel)
+- Python (Pi Sequential; Pi parallel; Sorting (Default implementation); Sorting Parallel)
+- Go (Pi Sequential; Pi parallel; Sorting Sequential)
+
+# Original Phases
+The project was original divided into phases. The completion of each phases depended of the efficiency of the group and/or the time found to complete them.
+This part isn't up-to-date anymore, and is here to compare with actual achievements.
+
 
 ## Phase 1 (mandatory)
 Algorithms:
@@ -142,3 +161,27 @@ Here the program took about 7 seconds to complete.
 
 Exceptions:
 - Java parallel implementation is currently using the parameter NTHREADS as the parallelism value.
+- Python parallel version takes the NTHREADS parameter as a deepness value instead of a number of threads.
+
+# How to build results
+Each part (PI / Sort) contains a Makefile :
+- 'make clean' : Clean the project
+- 'make' : Build all codes (will complain if it cannot compile one specific language, but it won't stop)
+- 'make runPI' : Run PI benchmarks
+- 'make runSort' : Run Sort benchmarks
+- 'make buildRez' : Export data into CSVs
+
+Once 'make buildRez' has finished, final results can be found in the data/ folder.
+You can find data under the given formats :
+N;NTHREADS[;DATA];TIME
+where :
+- N is the program parameter for the size of the array (sorting) or the precision of the approximation (pi)
+- NTHREADS is the number of threads (1 for sequential)
+- DATA is only there for PI approximation, and gives the result of the algorithm
+- TIME is the time taken to complete.
+
+Each configuration (N;NTHREADS) is run 10 times, you can get the average using the 'uniformize.rb' script :
+cd data/ && ruby uniformize.rb `ls`
+
+This script will create files names XXX_uniformized.csv, which contain the average measures for each configuration, without the DATA column.
+

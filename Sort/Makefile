@@ -52,13 +52,13 @@ runSorting: Sorting
 	-./runnerPara.sh "python Python/sortPara.py" "$(TEMPPREFIX)pyPara.csv"
 	-./runnerSeq.sh "java -cp $(BINPREFIX) NonParallelSort" "$(TEMPPREFIX)javaNonPara.csv"
 	-./runnerPara.sh "java -cp $(BINPREFIX) ParallelSort" "$(TEMPPREFIX)javaPara.csv"
-	-./runnerSeq.sh "./$(BINPREFIX)/CPP/block_indirect_sort" "$(TEMPPREFIX)CPPBlock.csv"
+	-./runnerPara.sh "./$(BINPREFIX)/CPP/block_indirect_sort" "$(TEMPPREFIX)CPPBlock.csv"
 	-./runnerPara.sh "./$(BINPREFIX)/CPP/parallel_stable_sort" "$(TEMPPREFIX)CPPPara.csv"
 	-./runnerPara.sh "./$(BINPREFIX)/CPP/sample_sort" "$(TEMPPREFIX)CPPSample.csv"
-	-./runnerPara.sh "./$(BINPREFIX)/CPP/singlethread" "$(TEMPPREFIX)CPPSeq.csv"
+	-./runnerSeq.sh "./$(BINPREFIX)/CPP/singlethread" "$(TEMPPREFIX)CPPSeq.csv"
 	-./runnerSeq.sh "./$(BINPREFIX)/goseq_sort" "$(TEMPPREFIX)GoSeq.csv"
 	-./runnerSeq.sh "./$(BINPREFIX)/release/sequential_pi" "$(TEMPPREFIX)rustSeq.csv"
-	-./runnerPara.sh "ruby Ruby/sortSeq.rb" "$(TEMPPREFIX)rbSeq.csv"
+	-./runnerSeq.sh "ruby Ruby/sortSeq.rb" "$(TEMPPREFIX)rbSeq.csv"
 
 buildRez: runSorting
 	-mkdir $(DATAPREFIX)
