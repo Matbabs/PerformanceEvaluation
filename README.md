@@ -43,7 +43,7 @@ The following languages / libraries were used :
 - Java (Pi Sequential; Pi parallel; Sorting (Default implementation); Sorting Parallel)
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" width="50"/>
 - Python (Pi Sequential; Pi parallel; Sorting (Default implementation); Sorting Parallel)
-<img src="https://geekflare.com/wp-content/uploads/2020/07/Go-Logo_Aqua-e1595512116516-600x270.png" width="80"/>
+<img src="https://geekflare.com/wp-content/uploads/2020/07/Go-Logo_Aqua-e1595512116516-600x270.png" width="100"/>
 - Go (Pi Sequential; Pi parallel; Sorting Sequential)
 
 # Original Phases
