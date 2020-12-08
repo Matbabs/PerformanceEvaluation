@@ -14,6 +14,8 @@
 This repository is the result of our Performance Evaluation project (november-december 2020).
 Our team was composed of Volodia PAROL-GUARINO, Matisse BABONNEAU and Alexandre DUVIVIER
 
+__[Results of our benchmark and experiments.](https://docs.google.com/presentation/d/1_6urOmiCBgwvJMcWKYwR6KrK1FiMzVa708ze9Ju208k/edit?usp=sharing)__
+
 # Goals
 The goal of the project is to evaluate the performances of different multithreading approaches. We are testing aspects such as :
 - Languages
