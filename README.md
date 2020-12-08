@@ -26,25 +26,24 @@ We will compare the performance in two categories:
 - the first one is a global comparaison (to find the best of the best) ;
 - the second one is to analyze the result grouping them by the language they are written in (to find the best possible implementation in languages where parameters are varying).
 
-<img src="https://deyclan.github.io/img/logo/C.png" width="100"/>
-<img src="https://img2.freepng.fr/20180408/pew/kisspng-the-c-programming-language-computer-icons-comput-programming-5acadc2dec0be9.0824244915232440779669.jpg" width="100"/>
-<img src="https://img-0.journaldunet.com/w7wTlL7Jz2N6yX4edTHoXxibY-E=/1280x/smart/ead0a7a3729547aba8dc36a9e81859d8/ccmcms-jdn/11515476.jpg" width="100"/>
-<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/2/2e/Java_Logo.svg/1200px-Java_Logo.svg.png" width="100"/>
-<img src="https://geekflare.com/wp-content/uploads/2020/07/Go-Logo_Aqua-e1595512116516-600x270.png" width="100"/>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/1200px-Rust_programming_language_black_logo.svg.png" width="100"/>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1200px-Ruby_logo.svg.png" width="100"/>
-
 # Actual Content
 This project was split into 2 parts :
 - Pi : We evaluated the performances of each language solution using the Pi approximation algorithm.
 - Sorting : We evaluated the performances of each chosen language implementation for array sorting.
 The following languages / libraries were used :
+<img src="https://deyclan.github.io/img/logo/C.png" width="100"/>
 - C (Pi Sequential; Pi parallel (PThread, OpenMP (Not used), MPI (Not used)))
+<img src="https://img2.freepng.fr/20180408/pew/kisspng-the-c-programming-language-computer-icons-comput-programming-5acadc2dec0be9.0824244915232440779669.jpg" width="100"/>
 - C++ (Pi Sequential, Pi Parallel (Boost), Sorting (Boost))
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1200px-Ruby_logo.svg.png" width="100"/>
 - Ruby (Pi Sequential; Pi parallel; Sorting (Default implementation))
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/1200px-Rust_programming_language_black_logo.svg.png" width="100"/>
 - Rust (Pi Sequential; Pi parallel; Sorting (Default implementation))
+<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/2/2e/Java_Logo.svg/1200px-Java_Logo.svg.png" width="100"/>
 - Java (Pi Sequential; Pi parallel; Sorting (Default implementation); Sorting Parallel)
+<img src="https://img-0.journaldunet.com/w7wTlL7Jz2N6yX4edTHoXxibY-E=/1280x/smart/ead0a7a3729547aba8dc36a9e81859d8/ccmcms-jdn/11515476.jpg" width="100"/>
 - Python (Pi Sequential; Pi parallel; Sorting (Default implementation); Sorting Parallel)
+<img src="https://geekflare.com/wp-content/uploads/2020/07/Go-Logo_Aqua-e1595512116516-600x270.png" width="100"/>
 - Go (Pi Sequential; Pi parallel; Sorting Sequential)
 
 # Original Phases
