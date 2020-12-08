@@ -20,7 +20,7 @@ ARGV.each do |filename|
     rez = line.split(";")
     if last_result != rez[0].to_i || nb_threads != rez[1].to_i
       moy = sum / nb_results
-      theFile.write(''+last_result.to_s+';'+nb_threads.to_s+';'+moy.to_s+"\n")
+      theFile.write(''+last_result.to_s+';'+nb_threads.to_s+';'+('%0.8f' % [moy])+"\n")
 
       nb_results = 0
       last_result = rez[0].to_i
